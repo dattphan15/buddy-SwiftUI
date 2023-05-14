@@ -8,14 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var messageText = ""
+    @State var messages: [String] = ["Welcome to BuddyGPT"]
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            HStack {
+                Text("BuddyGPT")
+                    .font(.largeTitle)
+                    .bold()
+                
+                Image(systemName: "bubble.left.fill")
+                    .font(.system(size: 26))
+                    .foregroundColor(Color.blue)
+            }
+            
+            ScrollView {
+                // Messages
+            }
+            
+            HStack {
+                TextField("Type something", text: $messageText)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                    .onSubmit {
+                        
+                    }
+                
+                Button {
+                    // sendMessage
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                }
+                .font(.system(size: 26))
+                .padding(.horizontal, 10)
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
