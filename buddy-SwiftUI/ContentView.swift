@@ -24,7 +24,9 @@ struct ContentView: View {
             }
             
             ScrollView {
-                // Messages
+                ForEach(messages, id: \.self) { message in
+                    Text(message)
+                }
             }
             
             HStack {
@@ -33,11 +35,11 @@ struct ContentView: View {
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
                     .onSubmit {
-                        
+                        sendMessage(message: messageText)
                     }
                 
                 Button {
-                    // sendMessage
+                    sendMessage(message: messageText)
                 } label: {
                     Image(systemName: "paperplane.fill")
                 }
@@ -45,6 +47,19 @@ struct ContentView: View {
                 .padding(.horizontal, 10)
             }
             .padding()
+        }
+    }
+    
+    func sendMessage(message: String) {
+        withAnimation {
+            messages.append("[USER]" + message)
+            self.messageText = ""
+        }
+        // Adds 1sec delay after sending and receiving message
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            withAnimation {
+                messages.append(getGPTResponse(message: message))
+            }
         }
     }
 }
