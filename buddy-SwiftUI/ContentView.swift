@@ -95,8 +95,9 @@ struct ContentView: View {
             // Send the user's message to the server and handle the response
             getGPTResponse(message: message) { response in
                 withAnimation {
-                    // Add the server's response to the messages array
-                    messages.append(response)
+                    // Trim the server's response and add it to the messages array
+                    let trimmedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
+                    messages.append(trimmedResponse)
                 }
             }
         }
