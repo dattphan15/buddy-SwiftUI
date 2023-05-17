@@ -27,7 +27,7 @@ struct ContentView: View {
                 ForEach(messages, id: \.self) { message in
                     if message.contains("[USER]") {
                         let newMessage = message.replacingOccurrences(of:
-                            "[USER]", with: "")
+                                                                        "[USER]", with: "")
                         
                         HStack {
                             Spacer()
@@ -51,7 +51,7 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
-                // Display messages bottom of screen
+                    // Display messages bottom of screen
                 }.rotationEffect(.degrees(180))
             }.rotationEffect(.degrees(180))
                 .background(Color.gray.opacity(0.10))
@@ -77,15 +77,27 @@ struct ContentView: View {
         }
     }
     
+    /**
+     Sends a user's message to the server and adds the server's response to the messages array.
+     
+     - Parameter message: The message from the user.
+     
+     - Returns: Void
+     */
     func sendMessage(message: String) {
         withAnimation {
+            // Add the user's message to the messages array
             messages.append("[USER]" + message)
             self.messageText = ""
         }
         // Adds 1sec delay after sending and receiving message
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            withAnimation {
-                messages.append(getGPTResponse(message: message))
+            // Send the user's message to the server and handle the response
+            getGPTResponse(message: message) { response in
+                withAnimation {
+                    // Add the server's response to the messages array
+                    messages.append(response)
+                }
             }
         }
     }
