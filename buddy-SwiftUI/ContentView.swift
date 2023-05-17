@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var messageText = ""
+    @State private var isTyping = false
     @State var messages: [String] = ["Welcome to BuddyGPT"]
     
     var body: some View {
@@ -41,7 +42,6 @@ struct ContentView: View {
                         }
                     } else {
                         HStack {
-                            
                             Text(message)
                                 .padding()
                                 .background(.gray.opacity(0.15))
@@ -51,10 +51,17 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
-                    // Display messages bottom of screen
-                }.rotationEffect(.degrees(180))
-            }.rotationEffect(.degrees(180))
-                .background(Color.gray.opacity(0.10))
+                    
+                // Display messages bottom of screen
+                }
+                .rotationEffect(.degrees(180))
+            }
+            .rotationEffect(.degrees(180))
+            .background(Color.gray.opacity(0.10))
+            
+            if isTyping {
+                TypingIndicatorView()
+            }
             
             HStack {
                 TextField("Type something", text: $messageText)
@@ -89,6 +96,9 @@ struct ContentView: View {
             // Add the user's message to the messages array
             messages.append("[USER]" + message)
             self.messageText = ""
+            
+            // Indicate that the bot is "typing"
+            self.isTyping = true
         }
         // Adds 1sec delay after sending and receiving message
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -98,6 +108,9 @@ struct ContentView: View {
                     // Trim the server's response and add it to the messages array
                     let trimmedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
                     messages.append(trimmedResponse)
+                    
+                    // Indicate that the bot has finished "typing"
+                    self.isTyping = false
                 }
             }
         }

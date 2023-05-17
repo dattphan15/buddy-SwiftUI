@@ -15,6 +15,7 @@
 		4745D4442A11266F00E064B1 /* buddy_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4745D4432A11266F00E064B1 /* buddy_SwiftUITests.swift */; };
 		4745D44E2A11266F00E064B1 /* buddy_SwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4745D44D2A11266F00E064B1 /* buddy_SwiftUIUITests.swift */; };
 		4745D4502A11266F00E064B1 /* buddy_SwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4745D44F2A11266F00E064B1 /* buddy_SwiftUIUITestsLaunchTests.swift */; };
+		47719E752A155F310007254E /* TypingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47719E742A155F310007254E /* TypingIndicatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		4745D4492A11266F00E064B1 /* buddy-SwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "buddy-SwiftUIUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4745D44D2A11266F00E064B1 /* buddy_SwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buddy_SwiftUIUITests.swift; sourceTree = "<group>"; };
 		4745D44F2A11266F00E064B1 /* buddy_SwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buddy_SwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		47719E742A155F310007254E /* TypingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				4745D4322A11266D00E064B1 /* buddy_SwiftUIApp.swift */,
 				4745D4342A11266D00E064B1 /* ContentView.swift */,
+				47719E742A155F310007254E /* TypingIndicatorView.swift */,
 				4745D4362A11266F00E064B1 /* Assets.xcassets */,
 				4745D4382A11266F00E064B1 /* Preview Content */,
 			);
@@ -263,6 +266,7 @@
 				4745D4352A11266D00E064B1 /* ContentView.swift in Sources */,
 				4745D4332A11266D00E064B1 /* buddy_SwiftUIApp.swift in Sources */,
 				470DB26F2A116AE400EE5284 /* GPTResponse.swift in Sources */,
+				47719E752A155F310007254E /* TypingIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
